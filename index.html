@@ -1,0 +1,57 @@
+<html>
+	
+	<head>
+		<style>
+			#snakeInterface{
+				height: 400px;
+				width: 400px;
+				border: thick solid #0000FF;
+				border-left-color: #0000FF;
+				border-top-color: #0000FF;
+				border-right-color: #0000FF;
+				border-bottom-color: #0000FF;
+				position: relative;
+			}
+			#snake{
+				height: 12px;
+				width: 12px;
+				border: thick solid #008000;
+				border-left-color: #008000;
+				border-top-color: #008000;
+				border-right-color: #008000;
+				border-bottom-color: #008000;
+				background-color: #008000;
+				position: absolute;
+				left: 200px;
+				top: 200px;
+			}
+			#adversary{
+				height: 12px;
+				width: 12px;
+				border: thick solid #0000FF;
+				background-color: #0000FF;
+				position: absolute;
+				left: 200px;
+				top: 180px;
+			}
+			input{
+				margin-left:178px;
+				width: 50px;
+
+			}
+		</style>
+		<script src="javascripts/snake.js"> </script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</head>
+	<body id="mainBody" onload="generateAdversary()">
+		<div id="snakeInterface">
+			<div id="snake">
+			</div>
+		</div>
+		<br />
+		<input id="score" value="0"readonly> </input>
+
+	</body>
+
+
+</html>
