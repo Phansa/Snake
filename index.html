@@ -50,7 +50,8 @@
 			}
 		</style>
 		<script src="javascripts/snake.js"> </script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		</script>
 	</head>
 	<body id="mainBody" onload="generateAdversary()">
 		<div id="snakeInterface">
@@ -64,8 +65,8 @@
 		<br />
 		<button type="button" onclick="processStart()">Start! </button>
 		<br />
-		<span style="margin-left: 120px;"> Disable Music </span> <input type="checkbox" id="musicDisable"
-		onclick="toggleMusic()">
+		<span style="margin-left: 120px;"> Disable Music </span> <input type="checkbox" 
+		id="musicDisable" onclick="toggleMusic()" checked> </input>
 		<p>
 			Use your arrow keys to move the green square and attack the blue square.
 			<br />
