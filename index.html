@@ -36,11 +36,17 @@
 			}
 			input{
 				width: 40px;
+				display: block;
+    			box-sizing: border-box;
+    			margin-left: 138px;
 			}
 			span
 			{
 				margin-left: 138px;
 				width:40 px;
+			}
+			button{
+				margin-left: 138px;
 			}
 		</style>
 		<script src="javascripts/snake.js"> </script>
@@ -53,11 +59,19 @@
 		</div>
 		<br />
 		<span> Score </span> <input id="score" value="0" readonly> </input>
+		<span> Hi-Score </span> <input id="hiscore" value="0" readonly> </input>
+		<span> Timer </span> <input id="timer" value="0" readonly> </input>
 		<br />
+		<button type="button" onclick="processStart()">Start! </button>
+		<br />
+		<span style="margin-left: 120px;"> Disable Music </span> <input type="checkbox" id="musicDisable"
+		onclick="toggleMusic()">
 		<p>
 			Use your arrow keys to move the green square and attack the blue square.
 			<br />
-			Try to get as high of a score as possible!
+			Try to get as high of a score as possible! 
+			<br />
+			You can press Space to start the game.
 		</p>
 	</body>
 
