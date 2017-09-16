@@ -1,6 +1,7 @@
 var borderColors =['#40E0D0', '#808080', '#D2691E', '#FF4500', '#66CDAA', '#8A2BE2', 
 '#B22222', '#0BD9F7'];
- 
+
+var currentSong = '';
 function generateAdversary()
 {
 	$('#snakeInterface').append('<div id=\'adversary\'> </div>');
@@ -30,18 +31,52 @@ function toggleMusic()
 	}
 }
 
+function getSoundcloudLink()
+{
+	var selectedSong =  $('#musicStyle option:selected').val();
+	console.log(selectedSong);
+	currentSong = selectedSong;
+	if(selectedSong === 'JoJos')
+	{
+		return '<iframe width="0px" height="0px" scrolling="no"\
+				frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//\
+				api.soundcloud.com/tracks/205059337&amp;color=%2300aabb&amp;auto_play=\
+				true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
+				show_reposts=false&amp;visual=true" id=\'music\'></iframe>';
+	}
+	else if(selectedSong === 'Kpop')
+	{
+		return '<iframe width="0px" height="0px" scrolling="no" \
+		frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A\
+		//api.soundcloud.com/tracks/209600639&amp;color=%23ff5500&amp;auto_play=\
+		true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
+		show_reposts=false&amp;visual=true" id=\'music\'></iframe>'
+	}
+}
+
+
+function generateSoundcloudPlayer()
+{
+	if(!($('#musicDisable').is(':checked')))
+	{
+		if( !($('#music').length > 0))
+		{
+			$('#mainBody').append(getSoundcloudLink());
+		}
+		else if(!(currentSong === $('#musicStyle option:selected').val()))
+		{
+			$('#music').remove();
+			$('#mainBody').append(getSoundcloudLink());
+		}
+	}
+}
+
 function processStart()
 {
 	if(	$('#timer').val() == 0)
 	{
-		if( !($('#music').length > 0) && !($('#musicDisable').is(':checked')))
-		{
-			$("#mainBody").append('<iframe width="0px" height="0px" scrolling="no" \
-				frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//\
-				api.soundcloud.com/tracks/205059337&amp;color=%2300aabb&amp;auto_play=\
-				true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
-				show_reposts=false&amp;visual=true" id=\'music\'></iframe>');
-		}
+		generateSoundcloudPlayer();
+		$('#dio').attr('src', 'images/DioSource.png');
 		$('#snake').css('left', '200px');
 		$('#snake').css('top', '200px');
 		resetBorders();
@@ -52,13 +87,27 @@ function processStart()
 		$('#timer').val($('#timer').val() - 1); }, 
 		1000);
 		setTimeout(function(){
+
 			clearInterval(timer); 
 			if($('#score').val() > $('#hiscore').val())
 			{
 				$('#hiscore').val($('#score').val());
 			}
+			if($('#score').val() < 20)
+			{
+				var widget1 = SC.Widget('music');
+				widget1.pause();
+				$('#madamada')[0].play();
+				setTimeout(function(){
+					widget1.play();
+				}, 2000);
+			}
 			$('#score').val(0);
 		}, $('#timer').val() * 1000);
+	}
+	else
+	{
+		generateSoundcloudPlayer();
 	}
 }
 
@@ -134,6 +183,17 @@ function rgb2hex(rgb){
 }
 
 
+// function generateDio()
+// {
+// 	console.log("HELLO");
+// 	$('#dioSound').attr('src', 'https://www.youtube.com/embed/\
+// 		7ePWNmLP0Z0?rel=0&amp;controls=0&amp;showinfo=0%22%20frameborder=%220%22%20\
+// 		allowfullscreen;autoplay=1');
+// 	setTimeout(function(){
+// 		$('#dioSound').attr('src', '');
+// 	}, 5000);
+// }
+
 function collisionDetect()
 {
 	var snakeLeft = parseString($('#snake').css('left'));
@@ -147,6 +207,10 @@ function collisionDetect()
 		$('#adversary').remove();
 		$('#score').val(parseInt($('#score').val()) + 1);
 		generateAdversary();
+		// if(Math.floor(Math.random() * 1) == 1)
+		// {
+		//     generateDio();
+		// }
 		var currentBorderColor = rgb2hex($('#snakeInterface').css('border-top-color'))
 		.toUpperCase();
 		var borderColor = borderColors[Math.floor(Math.random() * borderColors.length)];
@@ -163,9 +227,11 @@ document.onkeydown = function(e) {
 	switch (e.keyCode)
 	{
 		case 32:
+			e.preventDefault();
 			processStart();
 			break;
 		case 37:
+			e.preventDefault();
 			if($('#timer').val() == 0)
 			{
 				break;
@@ -176,6 +242,7 @@ document.onkeydown = function(e) {
   			$('#snake').css('border-left-color', '#ff0000');
   			break;
 		case 38:
+			e.preventDefault();
 			if($('#timer').val() == 0)
 			{
 				break;
@@ -186,6 +253,7 @@ document.onkeydown = function(e) {
   			$('#snake').css('border-top-color', '#ff0000');
   			break;
 		case 39:
+			e.preventDefault();
 			if($('#timer').val() == 0)
 			{
 				break;
@@ -196,6 +264,7 @@ document.onkeydown = function(e) {
   			$('#snake').css('border-right-color', '#ff0000');
   			break;
 		case 40:
+			e.preventDefault();
 			if($('#timer').val() == 0)
 			{
 				break;

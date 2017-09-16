@@ -49,15 +49,19 @@
 				margin-left: 138px;
 			}
 		</style>
+		<script src="javascripts/soundcloudapi.js"> </script>
 		<script src="javascripts/snake.js"> </script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 		</script>
 	</head>
 	<body id="mainBody" onload="generateAdversary()">
-		<div id="snakeInterface">
+		<div id="snakeInterface" style="display: inline-block;">
 			<div id="snake">
 			</div>
 		</div>
+		<img id="dio" src ="" style="margin-bottom: 300px;"> </img>
+		<iframe id="dioSound" width="0" height="0" src="" frameborder="0" allowfullscreen>
+		</iframe>
 		<br />
 		<span> Score </span> <input id="score" value="0" readonly> </input>
 		<span> Hi-Score </span> <input id="hiscore" value="0" readonly> </input>
@@ -65,8 +69,13 @@
 		<br />
 		<button type="button" onclick="processStart()">Start! </button>
 		<br />
-		<span style="margin-left: 120px;"> Disable Music </span> <input type="checkbox" 
-		id="musicDisable" onclick="toggleMusic()" checked> </input>
+		<span style="margin-left: 120px;"> Disable Music </span> 
+		<input type="checkbox" id="musicDisable" onclick="toggleMusic()" checked> </input>
+		<span style="margin-left: 50px;"> Music Style </span> 
+		<select id="musicStyle" onchange="generateSoundcloudPlayer()">
+		  <option value="JoJos">Jojo's</option>
+		  <option value="Kpop">Kpop</option>
+		</select>
 		<p>
 			Use your arrow keys to move the green square and attack the blue square.
 			<br />
@@ -74,7 +83,11 @@
 			<br />
 			You can press Space to start the game.
 		</p>
-	</body>
+		<audio id="madamada" style="display: none;">
+			<source src="sounds/GenjiMadaMada.ogg" type="audio/mpeg">
+		</audio>
+<!-- 		<embed name="genjiMada" type="audio/mpeg" autostart="false"  loop="false" hidden="true" src="sounds/GenjiMadaMada.ogg"></embed>
+ -->	</body>
 
 
 </html>
