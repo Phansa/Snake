@@ -2,6 +2,8 @@ var borderColors =['#40E0D0', '#808080', '#D2691E', '#FF4500', '#66CDAA', '#8A2B
 '#B22222', '#0BD9F7'];
 
 var currentSong = '';
+
+var globalScore = 0;
 function generateAdversary()
 {
 	$('#snakeInterface').append('<div id=\'adversary\'> </div>');
@@ -71,6 +73,14 @@ function generateSoundcloudPlayer()
 	}
 }
 
+function endGame()
+{
+	console.log("IN ENDGAME!");
+	$('#mainBody').empty();
+	$('#mainBody').append('<iframe width="700" height="500" src="https://www.youtube.com\
+		/embed/ZeOeU50YpJQ?autoplay=1" frameborder="0" allowfullscreen></iframe>')
+}
+
 function processStart()
 {
 	if(	$('#timer').val() == 0)
@@ -93,14 +103,47 @@ function processStart()
 			{
 				$('#hiscore').val($('#score').val());
 			}
-			if($('#score').val() < 20)
+			if($('#score').val() < 16)
 			{
-				var widget1 = SC.Widget('music');
-				widget1.pause();
-				$('#madamada')[0].play();
-				setTimeout(function(){
-					widget1.play();
-				}, 2000);
+				if($('#music').length > 0)
+				{
+					var widget1 = SC.Widget('music');
+					widget1.pause();
+				}
+				$('#gameText').text('Mabye next time you\'ll actually damage me');
+				$('#sfx').attr('src', 'sounds/GenjiMadaMada.ogg');
+				$('#sfx')[0].play();
+				if($('#music').length > 0)
+				{
+					setTimeout(function(){
+						widget1.play();
+					}, 2000);
+				}
+			}
+			else
+			{
+				if($('#music').length > 0)
+				{
+					var widget1 = SC.Widget('music');
+					widget1.pause();
+				}
+				$('#gameText').text('How could I, Dio, have been damaged?');
+				$('#sfx').attr('src', 'sounds/GenjiINeedHealing.ogg');
+				$('#sfx')[0].play();
+				if($('#music').length > 0)
+				{
+					setTimeout(function(){
+						widget1.play();
+					}, 2000);
+				}
+				globalScore += 1
+				console.log(globalScore);
+				if(globalScore > 2)
+				{
+					setTimeout(function(){
+					endGame();
+					}, 3000);	
+				}
 			}
 			$('#score').val(0);
 		}, $('#timer').val() * 1000);
@@ -182,17 +225,6 @@ function rgb2hex(rgb){
   ('0' + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
 
-
-// function generateDio()
-// {
-// 	console.log("HELLO");
-// 	$('#dioSound').attr('src', 'https://www.youtube.com/embed/\
-// 		7ePWNmLP0Z0?rel=0&amp;controls=0&amp;showinfo=0%22%20frameborder=%220%22%20\
-// 		allowfullscreen;autoplay=1');
-// 	setTimeout(function(){
-// 		$('#dioSound').attr('src', '');
-// 	}, 5000);
-// }
 
 function collisionDetect()
 {

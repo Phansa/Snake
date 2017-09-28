@@ -60,10 +60,15 @@
 			<div id="snake">
 			</div>
 		</div>
-		<img id="dio" src ="" style="margin-bottom: 300px;"> </img>
-		<iframe id="dioSound" width="0" height="0" src="" frameborder="0" allowfullscreen>
+		<div style="display: inline-block; height: 400px;  position: absolute;">
+			<img id="dio" src =""> </img>
+			<br />
+			<span id="gameText" style="margin-top: 300px; margin-left: 0px"> </span>
+		</div>
+<!-- 		<iframe id="dioSound" width="0" height="0" src="" frameborder="0" allowfullscreen>
 		</iframe>
-		<br />
+ -->			
+ 		<br />
 		<span> Score </span> <input id="score" value="0" readonly> </input>
 		<span> Hi-Score </span> <input id="hiscore" value="0" readonly> </input>
 		<span> Timer </span> <input id="timer" value="0" readonly> </input>
@@ -83,12 +88,13 @@
 			Try to get as high of a score as possible! 
 			<br />
 			You can press Space to start the game.
+			<br />
+			The higher your score, the more damage you deal to your opponent!
 		</p>
-		<audio id="madamada" style="display: none;">
+		<audio id="sfx" style="display: none;">
 			<source src="sounds/GenjiMadaMada.ogg" type="audio/mpeg">
 		</audio>
-<!-- 		<embed name="genjiMada" type="audio/mpeg" autostart="false"  loop="false" hidden="true" src="sounds/GenjiMadaMada.ogg"></embed>
- -->	</body>
+	</body>
 
 
 </html>
