@@ -78,7 +78,7 @@ function endGame()
 	console.log("IN ENDGAME!");
 	$('#mainBody').empty();
 	$('#mainBody').append('<iframe width="700" height="500" src="https://www.youtube.com\
-		/embed/ZeOeU50YpJQ?autoplay=1" frameborder="0" allowfullscreen></iframe>')
+		/embed/ZeOeU50YpJQ?autoplay=17rel=0" frameborder="0" allowfullscreen></iframe>')
 }
 
 function processStart()
@@ -130,19 +130,18 @@ function processStart()
 				$('#gameText').text('How could I, Dio, have been damaged?');
 				$('#sfx').attr('src', 'sounds/GenjiINeedHealing.ogg');
 				$('#sfx')[0].play();
-				if($('#music').length > 0)
-				{
-					setTimeout(function(){
-						widget1.play();
-					}, 2000);
-				}
 				globalScore += 1
-				console.log(globalScore);
 				if(globalScore > 2)
 				{
 					setTimeout(function(){
 					endGame();
 					}, 3000);	
+				}
+				if($('#music').length > 0)
+				{
+					setTimeout(function(){
+						widget1.play();
+					}, 2000);
 				}
 			}
 			$('#score').val(0);
@@ -239,10 +238,6 @@ function collisionDetect()
 		$('#adversary').remove();
 		$('#score').val(parseInt($('#score').val()) + 1);
 		generateAdversary();
-		// if(Math.floor(Math.random() * 1) == 1)
-		// {
-		//     generateDio();
-		// }
 		var currentBorderColor = rgb2hex($('#snakeInterface').css('border-top-color'))
 		.toUpperCase();
 		var borderColor = borderColors[Math.floor(Math.random() * borderColors.length)];
