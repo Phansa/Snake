@@ -38,13 +38,13 @@ function getSoundcloudLink()
 	var selectedSong =  $('#musicStyle option:selected').val();
 	console.log(selectedSong);
 	currentSong = selectedSong;
-	if(selectedSong === 'JoJos')
+	if(selectedSong === 'Stand Proud')
 	{
 		return '<iframe width="0px" height="0px" scrolling="no"\
 				frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//\
 				api.soundcloud.com/tracks/205059337&amp;color=%2300aabb&amp;auto_play=\
 				true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
-				show_reposts=false&amp;visual=true" id=\'music\'></iframe>';
+				show_reposts=false&amp;visual=false" id=\'music\'></iframe>';
 	}
 	else if(selectedSong === 'Kpop')
 	{
@@ -52,7 +52,15 @@ function getSoundcloudLink()
 		frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A\
 		//api.soundcloud.com/tracks/209600639&amp;color=%23ff5500&amp;auto_play=\
 		true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
-		show_reposts=false&amp;visual=true" id=\'music\'></iframe>'
+		show_reposts=false&amp;visual=false" id=\'music\'></iframe>'
+	}
+	else if(selectedSong === 'Stardust Crusaders')
+	{
+		return '<iframe width="0px" height="0px" scrolling="no" frameborder="no" \
+		src="https://w.soundcloud.com/player/?url=https%3A\
+		//api.soundcloud.com/tracks/197186143&amp;color=%23ff5500&amp;auto_play=true&amp;\
+		hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
+		show_reposts=false&amp;visual=false"></iframe>'
 	}
 }
 
@@ -77,8 +85,9 @@ function endGame()
 {
 	console.log("IN ENDGAME!");
 	$('#mainBody').empty();
-	$('#mainBody').append('<iframe width="700" height="500" src="https://www.youtube.com\
-		/embed/ZeOeU50YpJQ?autoplay=17rel=0" frameborder="0" allowfullscreen></iframe>')
+	$('#mainBody').append('<iframe width="560" height="315" src="https://www.youtube.com/\
+		embed/ZeOeU50YpJQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" \
+		allowfullscreen></iframe>')
 }
 
 function processStart()
