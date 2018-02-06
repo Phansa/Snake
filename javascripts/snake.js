@@ -36,8 +36,8 @@ function toggleMusic()
 function getSoundcloudLink()
 {
 	var selectedSong =  $('#musicStyle option:selected').val();
-	console.log(selectedSong);
 	currentSong = selectedSong;
+	console.log(selectedSong)
 	if(selectedSong === 'Stand Proud')
 	{
 		return '<iframe width="0px" height="0px" scrolling="no"\
@@ -60,7 +60,7 @@ function getSoundcloudLink()
 		src="https://w.soundcloud.com/player/?url=https%3A\
 		//api.soundcloud.com/tracks/197186143&amp;color=%23ff5500&amp;auto_play=true&amp;\
 		hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
-		show_reposts=false&amp;visual=false"></iframe>'
+		show_reposts=false&amp;visual=false" id=\'music\'></iframe>'
 	}
 }
 
@@ -83,10 +83,9 @@ function generateSoundcloudPlayer()
 
 function endGame()
 {
-	console.log("IN ENDGAME!");
 	$('#mainBody').empty();
-	$('#mainBody').append('<iframe width="560" height="315" src="https://www.youtube.com/\
-		embed/ZeOeU50YpJQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" \
+	$('#mainBody').append('<iframe width="560" height="315" id="video" src="https://www.youtube.com/\
+		embed/ZeOeU50YpJQ?autoplay=1" frameborder="0" encrypted-media" \
 		allowfullscreen></iframe>')
 }
 
@@ -112,6 +111,7 @@ function processStart()
 			{
 				$('#hiscore').val($('#score').val());
 			}
+			console.log($('#score').val())
 			if($('#score').val() < 16)
 			{
 				if($('#music').length > 0)
@@ -142,9 +142,7 @@ function processStart()
 				globalScore += 1
 				if(globalScore > 2)
 				{
-					setTimeout(function(){
 					endGame();
-					}, 3000);	
 				}
 				if($('#music').length > 0)
 				{
