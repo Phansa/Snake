@@ -256,6 +256,58 @@ function collisionDetect()
 	}
 
 }
+
+function keyLeft(e)
+{
+	e.preventDefault();
+	if($('#timer').val() == 0)
+	{
+		return;
+	}
+	var left = $('#snake').css('left');
+	$('#snake').css('left', MoveLeft(left));
+	resetBorders();
+	$('#snake').css('border-left-color', '#ff0000');
+}
+
+function keyRight(e)
+{
+	e.preventDefault();
+	if($('#timer').val() == 0)
+	{
+		return;
+	}
+	var right = $('#snake').css('left');
+	$('#snake').css('left', MoveRight(right));
+	resetBorders();
+	$('#snake').css('border-right-color', '#ff0000');
+}
+
+function keyUp(e)
+{
+	e.preventDefault();
+	if($('#timer').val() == 0)
+	{
+		return;
+	}
+	var up = $('#snake').css('top');
+	$('#snake').css('top', MoveUp(up));
+	resetBorders();
+	$('#snake').css('border-top-color', '#ff0000');
+}
+
+function keyDown(e)
+{
+	e.preventDefault();
+	if($('#timer').val() == 0)
+	{
+		return;
+	}
+	var down = $('#snake').css('top');
+	$('#snake').css('top', MoveDown(down));
+	resetBorders();
+	$('#snake').css('border-bottom-color', '#ff0000');
+}
 //Taken from https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
 document.onkeydown = function(e) {
 	switch (e.keyCode)
@@ -265,49 +317,29 @@ document.onkeydown = function(e) {
 			processStart();
 			break;
 		case 37:
-			e.preventDefault();
-			if($('#timer').val() == 0)
-			{
-				break;
-			}
-		  	var left = $('#snake').css('left');
-  			$('#snake').css('left', MoveLeft(left));
-			resetBorders();
-  			$('#snake').css('border-left-color', '#ff0000');
-  			break;
+			keyLeft(e);
+			break;
+		case 65:
+			keyLeft(e);
+			break;
 		case 38:
-			e.preventDefault();
-			if($('#timer').val() == 0)
-			{
-				break;
-			}
-		  	var up = $('#snake').css('top');
-  			$('#snake').css('top', MoveUp(up));
-			resetBorders();
-  			$('#snake').css('border-top-color', '#ff0000');
-  			break;
+			keyUp(e);
+			break;
+		case 87:
+			keyUp(e);
+			break;
 		case 39:
-			e.preventDefault();
-			if($('#timer').val() == 0)
-			{
-				break;
-			}
-		  	var right = $('#snake').css('left');
-  			$('#snake').css('left', MoveRight(right));
-			resetBorders();
-  			$('#snake').css('border-right-color', '#ff0000');
-  			break;
+			keyRight(e);
+			break;
+		case 68:
+			keyRight(e);
+			break;
 		case 40:
-			e.preventDefault();
-			if($('#timer').val() == 0)
-			{
-				break;
-			}
-		  	var down = $('#snake').css('top');
-  			$('#snake').css('top', MoveDown(down));
-  			resetBorders();
-  			$('#snake').css('border-bottom-color', '#ff0000');
-  			break;
+			keyDown(e);
+			break;
+		case 83:
+			keyDown(e);
+			break;
 	}
 	collisionDetect();
 };
