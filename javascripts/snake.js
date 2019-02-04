@@ -38,13 +38,19 @@ function getSoundcloudLink()
 	var selectedSong =  $('#musicStyle option:selected').val();
 	currentSong = selectedSong;
 	console.log(selectedSong)
-	if(selectedSong === 'Stand Proud')
+	if(selectedSong === 'Fighting Gold')
 	{
-		return '<iframe width="0px" height="0px" scrolling="no"\
-				frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//\
-				api.soundcloud.com/tracks/205059337&amp;color=%2300aabb&amp;auto_play=\
-				true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;\
-				show_reposts=false&amp;visual=false" id=\'music\'></iframe>';
+
+
+		return '<iframe width="0px" height="0px" scrolling="no" frameborder="no" allow="autoplay" \
+		src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/533849454&color=\
+		%23ff5500&auto_play=true&hide_related=false&show_comments=false&show_user=true&show_reposts=fals \
+		&show_teaser=false&visual=false" id=\'music\'></iframe>'
+		// return '<iframe width="0px" height="0px" scrolling="no"\
+		// frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//\
+		// api.soundcloud.com/tracks/533849454&amp;color=%23ff5500&amp;auto_play=true\
+		// &amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false\
+		// &amp;visual=false id=\'music\'></iframe>';	
 	}
 	else if(selectedSong === 'Kpop')
 	{
@@ -87,6 +93,7 @@ function endGame()
 	$('#mainBody').append('<iframe width="560" height="315" id="video" src="https://www.youtube.com/\
 		embed/ZeOeU50YpJQ?autoplay=1" frameborder="0" encrypted-media" \
 		allowfullscreen></iframe>')
+	$('#mainBody').append("<p> Press play to see how the fight ends! </p>")
 }
 
 function processStart()
@@ -100,7 +107,7 @@ function processStart()
 		resetBorders();
 		$('#adversary').remove();
 		generateAdversary();
-		$('#timer').val(30);
+		$('#timer').val(40);
 		var timer = setInterval(function(){ 
 		$('#timer').val($('#timer').val() - 1); }, 
 		1000);
@@ -112,7 +119,7 @@ function processStart()
 				$('#hiscore').val($('#score').val());
 			}
 			console.log($('#score').val())
-			if($('#score').val() < 16)
+			if($('#score').val() < 15)
 			{
 				if($('#music').length > 0)
 				{
